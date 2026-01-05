@@ -1,59 +1,13 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
+from app.controller.cadastrar_usuario_controller import CadastrarUsuarioController, CadastroRequest
+from app.controller.login_controller import LoginController, LoginRequest
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # frontend
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-class LoginRequest(BaseModel):
-    cpf: str
-    senha: str
-
 @app.post("/login")
 def login(dados:LoginRequest):
-    # strip: remove espaços vazios digitados pelo usuário
-    cpf = dados.cpf.strip()
-    senha = dados.senha.strip()
+  return LoginController.login(dados)
 
-    NUM_DIGITOS_CPF = 11
-    MAX_DIGITOS_SENHA = 7
-
-    CPF = "11111111111"
-    SENHA = "1111111"
-
-    if cpf == "" and senha == "":
-      raise HTTPException(status_code=400, detail="Campos cpf e senha estão vazios")
-    
-    if len(cpf) == 0:
-      raise HTTPException(status_code=400, detail="Campo cpf está vazio")
-    
-    if len(senha) == 0:
-      raise HTTPException(status_code=400, detail="Campo senha está vazio")
-
-    if len(cpf) != NUM_DIGITOS_CPF:
-      raise HTTPException(status_code=400, detail=f"CPF não contém os {NUM_DIGITOS_CPF} dígitos")
-    
-    if len(senha) < MAX_DIGITOS_SENHA:
-      raise HTTPException(status_code=400, detail=f"Senha contém menos de {MAX_DIGITOS_SENHA} dígitos")
-    
-    if cpf == CPF and senha == SENHA:
-      return {"mensagem": "Login realizado"}
-    
-    raise HTTPException(status_code=401, detail="CPF ou senha inválidos")
-
-
-#class CadastroRequest(BaseModel):
- #  nome: str
-  # cpf: str
-   #senha: str
-   #confirmarSenha:str
-
-#@app.post("/cadastro")
-#def cadastrarUsuario(dados:CadastroRequest):
+@app.post("/cadastro")
+def cadastrar_usuario(dados:CadastroRequest):
+  return CadastrarUsuarioController.cadastrar(dados)

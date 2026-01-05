@@ -11,11 +11,20 @@ function CadastrarUsuario() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        cpf, senha
+        nome: nome, 
+        cpf: cpf, 
+        senha: senha, 
+        confirmar_senha: senhaConfirmar
       })
     })
-    .then(response => response.json())
-    .then(data => {
+    .then(async response => {
+      const data = await response.json()
+
+      if (!response.ok) {
+        setMensagem(data.detail || 'Erro ao realizar login')
+        return
+      }
+
       setMensagem(data.mensagem)
     })
     .catch(() => {
