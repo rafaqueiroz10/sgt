@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import './Login.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
+  const navigate = useNavigate()
+
   function logar() {
     fetch('http://localhost:8001/login', {
       method: 'POST',
@@ -22,6 +24,8 @@ function Login() {
       }
 
       setMensagem(data.mensagem)
+      
+      navigate('/ver-tarefas')
     })
     .catch(() => {
       setMensagem('Erro ao conectar ao servidor')

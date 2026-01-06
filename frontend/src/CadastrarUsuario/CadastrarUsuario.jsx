@@ -27,8 +27,9 @@ function CadastrarUsuario() {
 
       setMensagem(data.mensagem)
     })
-    .catch(() => {
+    .catch((error) => {
       setMensagem('Erro ao conectar ao servidor')
+      console.error('Detalhes do erro: ', error)
     })
   }
 

@@ -46,7 +46,7 @@ ALTER TABLE public.usuarios OWNER TO postgres;
 
 -- object: usuario_fk | type: CONSTRAINT --
 -- ALTER TABLE public.tarefas DROP CONSTRAINT IF EXISTS usuario_fk CASCADE;
-ALTER TABLE public.tarefas ADD CONSTRAINT usuario_fk FOREIGN KEY (id)
+ALTER TABLE public.tarefas ADD CONSTRAINT usuario_fk FOREIGN KEY (cpf_usuario)
 REFERENCES public.usuarios (cpf) MATCH SIMPLE
 ON DELETE RESTRICT ON UPDATE RESTRICT;
 -- ddl-end --

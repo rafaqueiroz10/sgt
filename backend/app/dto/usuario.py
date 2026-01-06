@@ -10,8 +10,6 @@ class Usuario:
 
     @nome.setter
     def nome(self, valor: str):
-        if not valor:
-            raise ValueError("Nome não pode ser vazio")
         self.__nome = valor
 
     @property
@@ -20,8 +18,6 @@ class Usuario:
 
     @cpf.setter
     def cpf(self, valor: str):
-        if len(valor) != 11:
-            raise ValueError("CPF deve ter 11 dígitos")
         self.__cpf = valor
 
     @property
@@ -30,6 +26,4 @@ class Usuario:
 
     @senha.setter
     def senha(self, valor: str):
-        if len(valor) < 7:
-            raise ValueError("Senha deve ter no mínimo 7 caracteres")
         self.__senha = valor
