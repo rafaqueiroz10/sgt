@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.tarefas {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+    overflow-y: auto;
+}
+
+.ver-tarefas {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botoes button {
+    background-color: #1a1a1a;
+    color: rgb(253, 253, 253);
+    width: 30px;
+    height: 40px;
+    font-size: 30px;
+    cursor:pointer;
+    border-radius: 5px;
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    gap:2px;
+}
+
+.concluir {
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+
+.concluir button {
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 5px;
+}
+
+.tarefa {
+    display: flex;
+    flex-direction: row;
+    margin: 3px;
+    background-color: rgb(200, 190, 190);
+    text-align: left;
+    padding-left: 2%;
+    padding-right: 2%;
+    justify-content: space-between;
+    border-radius: 3px;
+}

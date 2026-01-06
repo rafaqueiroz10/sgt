@@ -21,3 +21,7 @@ def login(dados:LoginRequest):
 @app.post("/cadastro")
 def cadastrar_usuario(dados:CadastroRequest):
   return CadastrarUsuarioController.cadastrar(dados)
+
+@app.post("/adicionar-tarefa")
+def adicionar_tarefa(dados:TarefaRequest):
+  return AdicionarTarefaController.adicionar(dados)
